@@ -15,7 +15,7 @@ pipeline {
                 branch "fix-*"
             }
             steps{
-                sh 'echo hello fix branch'
+                sh 'echo hello fix-* branch'
             }
         }
 
@@ -24,7 +24,7 @@ pipeline {
                 branch "PR-*"
             }
             steps{
-                sh 'echo hello fix branch'
+                sh 'echo hello PR-* branch'
             }
         }
         
