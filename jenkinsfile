@@ -10,6 +10,23 @@ pipeline {
             }
         }
 
+        stage('Branch Name Validation') {
+            steps {
+                script {
+                    def allowedBranchPatterns = ['main', 'fix-.*', 'PR-.*']
+                    def currentBranch = env.BRANCH_NAME
+
+                    def isValidBranch = allowedBranchPatterns.any { pattern ->
+                        currentBranch =~ pattern
+                    }
+
+                    if (!isValidBranch) {
+                        error "Invalid branch name: ${currentBranch}. Allowed patterns: ${allowedBranchPatterns.join(', ')}"
+                    }
+                }
+            }
+        }
+
         stage('Execute only for the fix-* branch'){
             when {
                 branch "fix-*"
