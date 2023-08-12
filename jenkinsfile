@@ -1,0 +1,34 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage('Checkout') {
+            steps {
+                // Checkout your source code from version control
+                checkout scm
+                sh 'echo hello checkout'
+            }
+        }
+        
+        stage('Build') {
+            steps {
+                // Compile and build your Java application
+                sh 'javac HelloWorld.java'
+            }
+        }
+        
+        stage('Test') {
+            steps {
+                // Run tests for your Java application
+                sh 'java HelloWorld'
+            }
+        }
+        
+        stage('Deploy') {
+            steps {
+                // Deploy your application to a server or container
+                sh 'scp HelloWorld.class user@example.com:/path/to/deployment/'
+            }
+        }
+    }
+}
