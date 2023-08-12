@@ -10,9 +10,18 @@ pipeline {
             }
         }
 
-        stage('Execute only for the fix branch'){
+        stage('Execute only for the fix-* branch'){
             when {
                 branch "fix-*"
+            }
+            steps{
+                sh 'echo hello fix branch'
+            }
+        }
+
+        stage('Execute only for the PR-* branch'){
+            when {
+                branch "PR-*"
             }
             steps{
                 sh 'echo hello fix branch'
