@@ -15,6 +15,7 @@ pipeline {
         timeout(time: 1, unit: 'HOURS') // Global timeout for the entire pipeline
         buildDiscarder(logRotator(numToKeepStr: '10')) // Limit the number of builds kept
         timestamps() // Add timestamps to build output
+        skipStagesAfterUnstable() // Skip remaining stages if a stage becomes unstable
         // environment { // Set environment variables
         //     MY_ENV_VAR = 'example_value'
         // }
