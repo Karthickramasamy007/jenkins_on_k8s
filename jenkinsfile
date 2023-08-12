@@ -14,7 +14,7 @@ pipeline {
             when {
                 branch "fix-*"
             }
-            stage{
+            step{
                 sh 'echo hello fix branch'
             }
         }
