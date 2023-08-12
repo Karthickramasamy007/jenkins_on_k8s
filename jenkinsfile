@@ -9,8 +9,6 @@ pipeline {
     /*
         The options block is used to specify various global options that affect the behavior of the entire pipeline or stages within the pipeline
     */
-        
-
     options {
         timeout(time: 1, unit: 'HOURS') // Global timeout for the entire pipeline
         buildDiscarder(logRotator(numToKeepStr: '10')) // Limit the number of builds kept
@@ -61,7 +59,7 @@ pipeline {
                 branch "PR-*"
             }
             steps{
-                shh 'echo hello PR-* branch'
+                sh 'echo hello PR-* branch'
             }
         }
         
