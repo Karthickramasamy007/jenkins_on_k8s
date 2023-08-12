@@ -1,11 +1,29 @@
 pipeline {
+
     agent any
+
+    // triggers {
+    //     pollSCM('*/5 * * * 1-5')
+    // }
+
+    /*
+        The options block is used to specify various global options that affect the behavior of the entire pipeline or stages within the pipeline
+    */
+    options {
+        timeout(time: 1, unit: 'HOURS') // Global timeout for the entire pipeline
+        buildDiscarder(logRotator(numToKeepStr: '10')) // Limit the number of builds kept
+        timestamps() // Add timestamps to build output
+        skipStagesAfterUnstable() // Skip remaining stages if a stage becomes unstable
+        // environment { // Set environment variables
+        //     MY_ENV_VAR = 'example_value'
+        // }
+    }
     
     stages {
         stage('Checkout') {
             steps {
                 // Checkout your source code from version control
-                //checkout scm
+                //checkout scm 
                 sh 'echo hello checkout'
             }
         }
