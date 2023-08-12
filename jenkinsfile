@@ -9,6 +9,15 @@ pipeline {
                 sh 'echo hello checkout'
             }
         }
+
+        stage('Execute only for the fix branch'){
+            when {
+                branch "fix-*"
+            }
+            stage{
+                sh 'echo hello fix branch'
+            }
+        }
         
         stage('Build') {
             steps {
