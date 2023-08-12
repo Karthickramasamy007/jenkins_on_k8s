@@ -13,21 +13,21 @@ pipeline {
         stage('Build') {
             steps {
                 // Compile and build your Java application
-                sh 'javac HelloWorld.java'
+                sh 'echo hello build'
             }
         }
         
         stage('Test') {
             steps {
                 // Run tests for your Java application
-                sh 'java HelloWorld'
+                sh 'echo hello test'
             }
         }
         
         stage('Deploy') {
             steps {
                 // Deploy your application to a server or container
-                sh 'scp HelloWorld.class user@example.com:/path/to/deployment/'
+               sh 'echo hello deploy'
             }
         }
     }
