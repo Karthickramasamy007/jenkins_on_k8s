@@ -24,7 +24,7 @@ pipeline {
             steps {
                 // Checkout your source code from version control
                 //checkout scm 
-                sh 'echo hello checkout release v0.1.1'
+                sh 'echo hello checkout V0.1.1'
             }
         }
 
