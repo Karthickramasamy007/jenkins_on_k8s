@@ -31,7 +31,7 @@ pipeline {
         stage('Branch Name Validation') {
             steps {
                 script {
-                    def allowedBranchPatterns = ['main', 'fix-.*', 'PR-.*']
+                    def allowedBranchPatterns = ['main', 'PR-.*']
                     def currentBranch = env.BRANCH_NAME
 
                     def isValidBranch = allowedBranchPatterns.any { pattern ->
@@ -45,21 +45,12 @@ pipeline {
             }
         }
 
-        stage('Execute only for the fix-* branch'){
-            when {
-                branch "fix-*"
-            }
-            steps{
-                sh 'echo hello fix-* branch'
-            }
-        }
-
         stage('Execute only for the PR-* branch'){
             when {
                 branch "PR-*"
             }
             steps{
-                sh 'echo hello PR-* branch'
+                sh "echo hello PR-* branch $branch"
             }
         }
         
@@ -67,6 +58,13 @@ pipeline {
             steps {
                 // Compile and build your Java application
                 sh 'echo hello build'
+            }
+        }
+
+        stage('Scan') {
+            steps {
+                // Compile and build your Java application
+                sh 'echo hello scan'
             }
         }
         
