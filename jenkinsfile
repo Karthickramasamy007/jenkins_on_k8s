@@ -23,8 +23,8 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout your source code from version control
-                //checkout scm
-                sh 'echo hello checkout'
+                //checkout scm 
+                sh 'echo hello checkout V0.1.2'
             }
         }
 
