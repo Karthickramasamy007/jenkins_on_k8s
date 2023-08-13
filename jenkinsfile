@@ -57,7 +57,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Compile and build your Java application
-                sh 'echo hello build'
+                sh 'echo hello build $branch'
             }
         }
 
